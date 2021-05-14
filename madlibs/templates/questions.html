@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Fill in some words.</h3>
+<form action="/story">
+    {% for prompt in prompts %}
+    <p>{{prompt}}:
+        <input type="text" name="{{prompt}}" id="" required>
+    </p>
+    {% endfor %}
+    <input type="hidden" name="story_id" value="{{ story_id}}">
+    <button type="submit">Generate Story</button>
+</form>
+{% endblock %}
