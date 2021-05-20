@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boggle</title>
+    <link rel="stylesheet" href="/static/boggle.css">
+    <link rel="shortcut icon" href="#">
+</head>
+
+<body>
+    <section id="boggle">
+        <table id="stats">
+            <tbody>
+                <tr>
+                    <td>
+                        <p>HIGH SCORE: </p>
+                    </td>
+                    <td>
+                        <p><b>{{highscore}}</b> in {{numplays}} plays.</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>SCORE: </p>
+                    </td>
+                    <td>
+                        <p><b class="score">0</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>TIME REMAINING: </p>
+                    </td>
+                    <td>
+                        <p><b class="timer"></b></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="break"></div>
+        <form method="POST" class="submit-word">
+            <input name="word" class="word" autofocus autocomplete="off">
+            <button>Enter</button>
+        </form>
+        <div class="break"></div>
+        <table class="board">
+            <tbody>
+                {% for row in board %}
+                <tr>
+                    {% for letter in row%}
+                    <td>{{letter}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="break"></div>
+        <p class="msg"></p>
+        <ul class="words"></ul>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="/static/boggle.js"></script>
+    <script>
+        let game = new BoggleGame('boggle', 60);
+    </script>
+</body>
+
+</html>
